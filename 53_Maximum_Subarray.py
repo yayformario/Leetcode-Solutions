@@ -18,14 +18,13 @@ class Solution (object):
         #Loop entire array
         for n in nums:
 
-            #Only store positive values, we reset current sum if it's ever negative
+            #Check to see if currMax is larger than zero; negative sums don't add anything
             currentSum = max(0, currentSum)
-
-            #Store the next value
             currentSum += n
 
-            #The above code can be simplified to:
-            #currentSum = max(n, currentSum + n)
+            #--- Alternative: We either take (n) on it's own or (n + current)
+            #--- Honestly, we usually take (n + current) unless adding current makes it worse than just taking n alone
+            #--- currentSum = max(n, n + currentSum)
 
             #Update max sum if current sum is larger
             maxSum = max(currentSum, maxSum)
