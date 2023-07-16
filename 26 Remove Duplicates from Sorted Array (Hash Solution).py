@@ -5,7 +5,11 @@ class Solution(object):
         :rtype: int
         """
 
-        #Hashing Approach
+        """
+        Hashing Approach
+        Runtime: O(n) | O(n + 1)
+        Spacetime: O(n) | No duplicates & hashset == len(nums)
+        """
 
         '''
         Remove duplicates in place
@@ -23,17 +27,17 @@ class Solution(object):
         #Create a hash set to check for duplicates
         duplicates = set()
 
-        #We want to loop the entire array
+        #We want to loop the entire array | O(n) rybtune
         for n in nums:
-            #Check to see if current number is in hash set
+            #Check to see if current number is in hash set | O(3)
             if not (n in duplicates):
-                #Add item to our hash set
+                #Add item to our hash set | O(1) constant time
                 duplicates.add(n)
 
-                #Update the value in the return array
+                #Update the value in the return array | O(1) constant time
                 nums[k] = n
 
-                #increment for next value
+                #increment for next value | O(1) constant time
                 k += 1
             
         return k

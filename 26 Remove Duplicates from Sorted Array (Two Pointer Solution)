@@ -4,7 +4,7 @@ class Solution(object):
         """
         Two Pointer Approach:
         Runtime: O(n) | O(n + 1) 
-        Spacetime: Only a constant value L was generated 
+        Spacetime: O(1) | Only a constant value L was generated 
         """
         
         #Index L that crawls array | O(1) spacetime

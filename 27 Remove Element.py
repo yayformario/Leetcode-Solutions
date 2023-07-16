@@ -19,15 +19,16 @@ class Solution (object):
 
         '''
         Two pointer approach
-        Runtime:
-        SpaceTime:
+        Runtime: O(n) | O(n + 1)
+        SpaceTime: O(1) |L index
         '''
-        #L index
+        #L index | O(1) spacetime
         L = 0
         #R will loop entire array | O(n) runtime
         for R in nums:
             '''
             R will slowly add values to nums[L] that are not R
+                O(1) runtime | constant time for changing values and incrementing 
             '''
             if R != val:
                 #update array and increment
