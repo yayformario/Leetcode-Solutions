@@ -1,5 +1,5 @@
-class Solution(object):
-    def isValid(self, s):
+class Solution (object):
+     def isValid(self, s):
         """
         :type s: str
         :rtype: bool
@@ -27,31 +27,34 @@ class Solution(object):
         stack = []
 
         #Hashmap
-        #   Key: Closing Brackets
-        #   Value: Open Brackets
+        #   Key: Opening Brackets
+        #   Value: Closing Brackets
         # Spacetime: O(1), 3 constants
         # --------------
-        #  )  ]  }
-        #  (  [  { 
+        #  (  [  {
+        #  )  ]  } 
         # --------------
 
-        myMap = {")":"(" , "]":"[", "}":"{"}
+        bracketsMap = {"(":")" , "[":"]", "{":"}"}
 
 
         #Loop entire string
         #Runtime: O(n) 
         for bracket in s:
-            #Open Brackets DNE as keys in our hashmap
-            if bracket not in myMap: #O(1) search up
+            #Opening brackets are added to the stack
+            if bracket in bracketsMap: #O(1) search up
                 stack.append(bracket)
-                continue
-            if not stack or stack[-1] != myMap[bracket]:
+
+            #False if: (stack is empty) or (brackets do not match)
+            #Check if stack is empty FIRST to avoid out of bounds
+            #Closing brackets get compared to top of stack's hashed value
+            elif (not stack) or (bracket != bracketsMap[stack.pop()]):
                 return False
-            stack.pop()
 
 
-        #return true by default
-        return not stack
+        #At this point, if all brackets were matching, the stack should be empty
+        #Returns true by default: if (not stack) has anything, it returns false
+        return (not stack)
         
 
 testing = Solution()
@@ -64,3 +67,4 @@ example4 = "}"
 print(testing.isValid(example1))
 print(testing.isValid(example2))
 print(testing.isValid(example3))
+print(testing.isValid(example4))
