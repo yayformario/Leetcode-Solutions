@@ -2,7 +2,7 @@ class Solution(object):
     def removeDuplicates (self, nums):
 
         """
-        Two Pointer Approach:
+      26 Remove Duplicates from Sorted Array (Two Pointer Solution)  Two Pointer Approach:
         Runtime: O(n) | O(n + 1) 
         Spacetime: O(1) | Only a constant value L was generated 
         """
