@@ -48,7 +48,10 @@ class Solution(object):
 testing = Solution()
 example = [1,1,2]
 example2 = [0,0,1,1,1,2,2,3,3,4]
+example3 = [0,0,0,0,0]
+example4 = [1,2,3,4,5]
 
 print(testing.removeDuplicates(example))
 print(testing.removeDuplicates(example2))
-
+print(testing.removeDuplicates(example3))
+print(testing.removeDuplicates(example4))
