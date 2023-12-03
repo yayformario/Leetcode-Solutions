@@ -9,6 +9,7 @@ class Solution(object):
         Hashing Approach
         Runtime: O(n) | O(n + 1)
         Spacetime: O(n) | No duplicates & hashset == len(nums)
+            ==--- Does not qualify as a solution!---== 
         """
 
         '''
@@ -24,12 +25,13 @@ class Solution(object):
         '''
         #Create return value k and set to zero for default
         k = 0
+        
         #Create a hash set to check for duplicates
         duplicates = set()
 
-        #We want to loop the entire array | O(n) rybtune
+        #We want to loop the entire array | O(n) runtune
         for n in nums:
-            #Check to see if current number is in hash set | O(3)
+            #Check to see if current number is in hash set | (O(k), k == # of unique elements)
             if not (n in duplicates):
                 #Add item to our hash set | O(1) constant time
                 duplicates.add(n)
