@@ -66,8 +66,8 @@ class Solution(object):
 
         """
         Two Pointer approach:
-        R crawls entire list of nums
-        L crawls when we find an element NOT equal to val
+        - R crawls entire list of nums
+        - L crawls when we find an element NOT equal to val
 
         If nums[R] == val:
             R crawls
@@ -81,8 +81,8 @@ class Solution(object):
         NOTE: 
         L and R start at the same index
         That means on the first loop that nums[L] == nums[R]
-            L doesn't crawl if first value is not val
-            L returns zero if it was the only element to check
+            L doesn't crawl if: nums[R] == val 
+                L returns zero if it was the only element to check
 
             L gets updated regardless for consistency of algorithm
             This is the only case of redundant work O(1)
@@ -153,6 +153,7 @@ val6 = 7
 
 #Function that prints input and output
 def printResults(nums, val):
+
     #Return
     print("Test Case:")
     print("nums = " + str(nums))
