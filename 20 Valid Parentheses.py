@@ -64,3 +64,4 @@ example4 = "}"
 print(testing.isValid(example1))
 print(testing.isValid(example2))
 print(testing.isValid(example3))
+print(testing.isValid(example4))
