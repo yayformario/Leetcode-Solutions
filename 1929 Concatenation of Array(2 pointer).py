@@ -46,7 +46,10 @@ class Solution (object):
         """
 
         """
-        Two loops, O(2n):
+        Two loops
+        Spacetime: O(2n) for two loops
+        Spacetime: O(2n) for ans
+
             Once to fill up the first half
             [1 2 1 _ _ _ ]
 
