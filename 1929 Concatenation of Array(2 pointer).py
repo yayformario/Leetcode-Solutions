@@ -71,7 +71,7 @@ class Solution (object):
             [ 1 2 1 1 2 1 ]
 
         1 Pointer solution
-        Runtime: O(n) | O(2n + 2n) -> O(4n) 
+        Runtime: O(n) | O(n)
         Spacetime: O(n) | O(2n + 1) 
         """
 
@@ -85,6 +85,7 @@ class Solution (object):
 
         """
         Total runtime: O(2n)
+            We update 2 values each iteration
         """
         #Loop every value
         #Runtime: O(n) 
