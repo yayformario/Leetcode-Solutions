@@ -56,12 +56,35 @@ class Solution(object):
 
 testing = Solution()
 
+#=====--- Valid Edge Cases ---=====#
 example1 = "()"
 example2 = "()[]{}"
 example3 = "([{}])"
-example4 = "}"
+
+#=====--- Invalid Edge Cases ---=====#
+#Opening brackets only
+example4 = "({[({[["  
+
+#Closig brackets only
+example5 = ")}])]))}]]"
+
+#Length of 1
+example6 = "}"
+
+#Out-of-order brackets
+example7 = "]["
+example8 = "){"
+example9 = "([}{])"
+example10 = "()[]}{()"
+
 
 print(testing.isValid(example1))
 print(testing.isValid(example2))
 print(testing.isValid(example3))
 print(testing.isValid(example4))
+print(testing.isValid(example5))
+print(testing.isValid(example6))
+print(testing.isValid(example7))
+print(testing.isValid(example8))
+print(testing.isValid(example9))
+print(testing.isValid(example10))
