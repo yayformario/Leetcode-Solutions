@@ -46,7 +46,6 @@ class Solution (object):
 
         bracketsMap = {"(":")" , "[":"]", "{":"}"}
 
-
         # Loop entire string
         # Runtime: O(n)
         # Invalid if: (stack is empty) or (brackets do not match) 
