@@ -63,6 +63,7 @@ examples = [
 
     #All negatives example
     [-60,-200,-50,-353,-100,-10,-79,-333],
+    [-3,-2,-3]
 ]
 
 #Printing all examples

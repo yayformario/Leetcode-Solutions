@@ -75,6 +75,7 @@ examples = [
 
     #All different sign test case: Expected (n)
     [0,99,1,98,2,97,3,96,4,95], #Expected 10
+    
     #All same value test case: Expected 1
     [12,12,12,12,12,12,12,12,12,12], 
 
