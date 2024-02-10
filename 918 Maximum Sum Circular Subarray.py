@@ -1,21 +1,17 @@
 class Solution (object):
-    
-    
-
-    
     def maxSubarraySumCircular(self, nums):
         #---Kadane's Algo Gimmick:
         #Find the global minumum
         #   If circular: (Total) - (Global Min) = maxSum answer
     
-        #Initialize currMin and currMax
-        currMin = 0
-        currMax = 0
+        #Initialize currMax and currMin
+        currentMax = 0
+        currentMin = 0
 
-        #Initialize minSum and maxSum
-        minSum = nums[0]
+        #Initialize maxSum and minSum 
         maxSum = nums[0]
-
+        minSum = nums[0]
+        
         #intialize total
         total = 0
 
@@ -23,12 +19,12 @@ class Solution (object):
         for n in nums:
             
             #Keep track of current and max sum
-            currMax = max(n, n + currMax)
-            maxSum = max(maxSum, currMax)
+            currentMax = max(n, n + currentMax)
+            maxSum = max(maxSum, currentMax)
 
             #Keep track of current and min sum 
-            currMin = min(n, n + currMin)
-            minSum = min(minSum, currMin)
+            currentMin = min(n, n + currentMin)
+            minSum = min(minSum, currentMin)
 
             #Keep track of total sum
             total += n
