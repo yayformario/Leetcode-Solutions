@@ -1,16 +1,13 @@
 class Solution (object):
     def maxTurbulenceSize(self, arr):
-
         """
         Constraints:
             Length: [1, 10000]
             elements range: [0,1000000000] // no negatives
-
         Edge cases: 
             One element
                 return 1
         """
-
         #Default value
         maxTurb = 1 
         currentTurb = 1
@@ -23,7 +20,8 @@ class Solution (object):
 
         #Can safely search (i+1) without going out of bounds
         for i in range(len(arr) - 1):
-            #===----- Update the currentSign and opposite sign: Three edge case -----===#
+            
+            #===----- Update the currentSign  -----===#
             #If nextValue is the same value
             if (arr[i] == arr[i+1]):
                 currentSign = 0
