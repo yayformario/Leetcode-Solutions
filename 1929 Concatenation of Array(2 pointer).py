@@ -98,7 +98,6 @@ class Solution (object):
              #Populate second half
              #Runtime: O(1)
              ans[L + n] = nums[L]
-
         return ans
 
 testing = Solution()
