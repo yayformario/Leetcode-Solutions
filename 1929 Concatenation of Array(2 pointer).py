@@ -74,7 +74,6 @@ class Solution (object):
         Runtime: O(n) | O(n)
         Spacetime: O(n) | O(2n + 1) 
         """
-
         #We will be using len(nums) multiple times
         #Spacetime: O(1)
         n = len(nums)
