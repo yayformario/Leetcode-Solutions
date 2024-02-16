@@ -3,48 +3,72 @@ class Solution (object):
         #---Kadane's Algo Gimmick:
         #Find the global minumum
         #   If circular: (Total) - (Global Min) = maxSum answer
-    
-        #Initialize currMax and currMin
-        currentMax = 0
-        currentMin = 0
 
-        #Initialize maxSum and minSum 
+        #===----- For regular maxSum -----===# 
         maxSum = nums[0]
+        currentMaxSum = 0
+       
+        #===----- For circular sum -----===# 
         minSum = nums[0]
-        
-        #intialize total
-        total = 0
+        currentMinSum = 0
+        totalSum = 0
 
         #Looping entire list: O(n)
         for n in nums:
             
             #Keep track of current and max sum
-            currentMax = max(n, n + currentMax)
-            maxSum = max(maxSum, currentMax)
+            currentMaxSum = max(n, n + currentMaxSum)
+            maxSum = max(maxSum, currentMaxSum)
 
             #Keep track of current and min sum 
-            currentMin = min(n, n + currentMin)
-            minSum = min(minSum, currentMin)
+            currentMinSum = min(n, n + currentMinSum)
+            minSum = min(minSum, currentMinSum)
 
             #Keep track of total sum
-            total += n
+            totalSum += n
 
         #--- Edge Case: Noncircular largest sum; simply return maxSum ---#
-        noncircular = maxSum
+        noncircularSum = maxSum
 
         #--- Edge Case: Circular largest sum; (Total - minSum) = maxSum
-        circular = (total - minSum)
+        circularSum = (totalSum - minSum)
 
         #--- Edge Case: All negative values; simply return maxSum (else return whatever is larger: circular vs noncircular)
         if (maxSum < 0):
             return maxSum
         
         else:
-            return max(circular, noncircular)
+            return max(circularSum, noncircularSum)
         #--- The code above can be summarized as:
         #return (max(noncircular, circular) if (maxSum > 0) else (maxSum))
     
 
 testing = Solution()
-example = [0]
-print(testing.maxSubarraySumCircular(example))
+examples = [
+    #Given examples
+    [1,-2,3,-2],
+    [5,-3,5],
+    [-3,-2,-3]
+    
+    #Single element examples
+    [10],
+    [-1],
+
+    #Two element examples
+    [2,3],
+    [-1,10],
+    [-5,3],
+    [-2,-4],
+
+    #Three element examples, noncircular
+    [1,2,3],
+    [-4,-5,-6],
+    [-100, 15, -100],
+
+    #Three element examples, circular
+    [10,-10,10],
+    [10,9,8,-100,0,0,3,0,0,-100,0,1,2]
+
+
+]
+print(testing.maxSubarraySumCircular(examples))

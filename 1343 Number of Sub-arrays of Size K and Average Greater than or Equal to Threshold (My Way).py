@@ -8,28 +8,28 @@ class Solution(object):
         """    
         #Initialize return value
         returnValue = 0
+        
+        #Two pointer approach
+        #Left pointer will slide with window
+        leftPointer = 0
+ 
+        currentSum = 0
+        currentAvg = 0
 
-        #We can "fast forward" growing to size k
-        #Growing to size (k-1) 
-        #Adding to currentSum on first iteration gets us to size k
-        #No longer need to check if our Window is at size k in for loop 
-        currentSum = sum(arr[:k-1])
-
-        #Clever manipulation of average formula
-        #Avg = sum / len
-        #sum - Avg * len
-        #Instead of calculating average everytime, 
-        #We only need to ensure that our currentSum >= threshold * k
-        goal = threshold * k
-
-        #Note that we're starting at (k-1)
-        #k can't be zero, so for 1 element cases, (k-1)
-        for rightPointer in range((k-1), len(arr)):
+        #Loops entire array O(n)
+        for rightPointer in range (len(arr)):
             currentSum += arr[rightPointer]
-            if (currentSum >= goal):
-                returnValue += 1
-            #Left pointer is simply (Right pointer - k + 1)
-            currentSum -= arr[rightPointer - k + 1]
+            currentAvg = currentSum // k
+
+            #Grow window until size k
+            if ((rightPointer - leftPointer + 1) == k):
+                if (currentAvg >= threshold):
+                    returnValue += 1
+                #Our window is at size k
+                #incremeneting L now will gaurantee that we stay at k next iteration
+                currentSum -= arr[leftPointer]
+                leftPointer += 1
+
         return returnValue
 
 testing = Solution()
