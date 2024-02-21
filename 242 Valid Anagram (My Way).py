@@ -33,7 +33,6 @@ class Solution(object):
                 hashMapT[t[i]] = 1
 
         #We now want to compare both hashmaps
-        #In this case, we'll convert them to strings and then compare
         if (hashMapS == hashMapT): 
             return True 
 
