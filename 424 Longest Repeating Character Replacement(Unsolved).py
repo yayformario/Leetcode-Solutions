@@ -5,7 +5,6 @@ class Solution(object):
 
         #Two Pointer approach
         leftPointer = 0
-        replaceCount = 0
 
         #Going to need a hashmap
         charCounters = {}
@@ -14,37 +13,37 @@ class Solution(object):
         charCounters[s[0]] = 0
         
         #Keep track of the most re-ocurring character
-        maxOccurence = 0
+        mostReoccuringCharacterCounter = 0
+
         #Loop entire array:
         for rightPointer in range(len(s)):
             #Check if letter in hashmap
             if (s[rightPointer] in charCounters):
                 #Incrementer letter counter
                 charCounters[s[rightPointer]] = charCounters[s[rightPointer]] + 1
-                maxOccurence = max(maxOccurence, charCounters[s[rightPointer]])
+                mostReoccuringCharacterCounter = max(mostReoccuringCharacterCounter, charCounters[s[rightPointer]])
                 
             #Not in hashmap
             else:
                 #Add the letter to our hashmap
                 charCounters[s[rightPointer]] = 1
             
-            #[maxOccurenece + k] the largest window we can have
-            #We update maxLen as long as <= than that
-            if ((rightPointer - leftPointer + 1) <= (maxOccurence + k)):
+            #[mostReoccuringCharacterCounter + k] the largest window we can have
+            #We update maxLen as long as our current window <= than the largest window
+            if ((rightPointer - leftPointer + 1) <= (mostReoccuringCharacterCounter + k)):
                     maxLen = max(maxLen, rightPointer - leftPointer + 1)
             
             
             #Shrink window if it's too long for replacements
-            if ((rightPointer - leftPointer + 1) > (maxOccurence + k)):
+            if ((rightPointer - leftPointer + 1) > (mostReoccuringCharacterCounter + k)):
                 #If L is the max occuring char, decrement maxOccurence
-                if (charCounters[s[leftPointer]] == maxOccurence):
-                    maxOccurence -= 1
+                if (charCounters[s[leftPointer]] == mostReoccuringCharacterCounter):
+                    mostReoccuringCharacterCounter -= 1
                 #Decrement hash value
                 charCounters[s[leftPointer]] = charCounters[s[leftPointer]] - 1
 
                 #Move left pointer
                 leftPointer += 1
-
 
 
         return maxLen
