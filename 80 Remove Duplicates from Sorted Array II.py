@@ -2,38 +2,19 @@ from typing import List
 
 class Solution:
     def removeDuplicates (self, nums: List[int]) -> int:
+        #Early exit:
+        if (len(nums) <= 2):
+            return len(nums)
+        
         returnVal = 0
         duplicateTolerance = 2
         leftPointer = 0
         currentCount = 0
+
+        
         #We want to loop the entire array
         for rightPointer in range(len(nums)):
-            #Check to see if rightPointer is not a duplicate
-            if nums[leftPointer] == nums[rightPointer]:
-                currentCount += 1
 
-                #Check to see if we're beyond our tolerance for duplicates
-                if currentCount <= duplicateTolerance :
-                    returnVal += 1
-
-            #We encountered a new value value
-            #We only want to move leftPointer when we encounter new values 
-            else:
-                #Edge case where we encountered more than 2 or duplicates: [0,0]
-                #We want to move pointer over by two elements
-                if (currentCount >= duplicateTolerance):
-                    leftPointer += 2
-                    nums[leftPointer] = nums[rightPointer]
-                
-                #Otherwise, we only encountered the value once
-                else: 
-                
-                #Update the vale at leftPointer
-                nums[leftPointer] = nums[rightPointer]
-
-                #Update counters
-                currentCount = 1
-                returnVal += 1
 
         return returnVal
         
@@ -57,16 +38,16 @@ examples = [
 
     #Three elemet edge cases:
     [1,2,3], #3: [1,2,3]
-    [1,1,2], #3
+    [1,1,2], #3: [1,1,2]
     [3,3,3], #2: [3,3]
 
     #All same elements: returnVal < len(nums)
     [0,0,0,0,0], #2: [0,0]
     
-    #All unique elements: returnVal == len(nums)
+    #All unique elements: returnVal == len(nums), nothing gets updated
     [1,2,3,4,5,6], #6: [1,2,3,4,5,6]
 
-    #Cases where elements appear twice: returnVal == len(nums)
+    #Cases where elements appear twice: returnVal == len(nums), nothing gets updated
     [1,1,2,2,3,3,4,4], #8: [1,1,2,2,3,3,4,4]
 
     #Cases where elements appear three times: returnVal < len(nums)
@@ -94,7 +75,7 @@ for ex in examples:
     
 
 """
-Notes:
+Description:
 - Remove duplicates, only allowing elements appearing twice
 - has to be in place; O(1) memory
 - Keep relative order of the elements
@@ -104,4 +85,22 @@ Constraints:
 - Gauranteed at least 1 element
 - Negative values
 - Already sorted
+
+#Notes:
+Cases with all unique elements never gets shifted:
+[1,2,3,4,5,6,7]
+
+Our (return value == len(nums)) if we never encounter a variable more than twice
+[1]
+[0,0]
+[1,1,2,2,3,3]
+[4,5,6,6,7]
+
+#We don't always have to shift 3+ element appearances
+[3,3,3] -> [3,3]
+#[1,2,3,4,5,5,5,5,5,5] - > [1,2,3,4,5,5]
+
+#But 3+ element appearances are the only times we have to consider shifting
+[1,2,2,3,3,3,4,4,4,4,5,5,5,5,5]
+
 """
