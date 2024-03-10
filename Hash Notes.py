@@ -62,11 +62,12 @@ value = myMap.get('MX5 Miata', 0) #returns 2019
 myMap = { i: 2*i for i in range(3) }
 print(myMap) # {0: 0, 1: 2, 2: 4}
 
-# Looping through maps
+# Looping through all the keys in a hashmap
 myMap = {"checkingBalance" : 6000, "savingsBalance" : 100}
 for key in myMap:
     print(key, myMap[key]) # checkingBalance 600, savingsBalance 100
 
+#Looping through all the values of a hashmap
 for val in myMap.values(): # 6000, 100
     print(val)
 
