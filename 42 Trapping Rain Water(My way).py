@@ -1,6 +1,10 @@
 from typing import List
 class Solution:
     def trap(self, height: List[int]) -> int:
+        #Quick exits
+        if len(height) <= 2:
+            return 0
+
         #Two pointer approach
         leftPointer = 0
         rightPointer = len(height) - 1
@@ -41,6 +45,14 @@ examples = [
     #Given examples:
     [0,1,0,2,1,0,1,3,2,1,2,1], #6
     [4,2,0,3,2,5], #9
+
+    #Single example
+    [10], #0
+
+    #Two element examples
+    [0,3], #0
+    [3,0], #0
+    [3,3] #0
 ]
 
 for ex in examples:
@@ -51,7 +63,7 @@ for ex in examples:
 
 """
 Notes: 
-We know that the smaller of the heights determines how much water can "roll over" 
+- We need at least 3 inputs to "trap" water
 
 Constraints:
 - We are gauranteed at least 1 element
