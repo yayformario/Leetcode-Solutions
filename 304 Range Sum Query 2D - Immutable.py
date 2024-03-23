@@ -57,8 +57,21 @@ class NumMatrix:
         #So our answer is:  (giant block) - (above region + left region) + (topLeft)
         return bottomRight - (above + left) + topLeft
     
-testing = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]])
+#Given example
+matrix = [[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]
+testing = NumMatrix(matrix)
+regions = [
+     [2, 1, 4, 3], 
+     [1, 1, 2, 2], 
+     [1, 2, 2, 4]
+]
 
+
+for ex in regions:
+    print(
+        "Input: " + str(ex) + "\n" + 
+        "Output: " + str(testing.sumRegion(ex[0], ex[1], ex[2], ex[3]))
+    )
 
     
 
