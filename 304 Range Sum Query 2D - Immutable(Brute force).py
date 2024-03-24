@@ -16,8 +16,6 @@ class NumMatrix:
                 #Add current value to our rangeSum
                 rangeSum += self.matrix[row][col]
 
-
-
         return rangeSum
     
 #Given example

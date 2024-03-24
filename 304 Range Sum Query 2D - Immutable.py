@@ -8,8 +8,8 @@ class NumMatrix:
         COLS = len(matrix[0])
 
         #Review list comprehension. Created prefix grid with +1 to row and col
-        #This is to quite literally avoid edge cases
-        #   We will be "chiseling" away the uneeded portions portions for our answer
+        #This is to quite literally to avoid edge cases
+        #   We will be "chiseling" away the uneeded portions for our answer
         #   +1 to col and +1 to row helps avoid going out of bounds for the first row and first column cases
         self.prefixMatrix = [[0] * (COLS + 1) for r in range(ROWS + 1)]
 
@@ -72,8 +72,6 @@ for ex in regions:
         "Input: " + str(ex) + "\n" + 
         "Output: " + str(testing.sumRegion(ex[0], ex[1], ex[2], ex[3]))
     )
-
-    
 
 # Your NumMatrix object will be instantiated and called as such:
 # obj = NumMatrix(matrix)
