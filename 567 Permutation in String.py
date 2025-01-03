@@ -10,29 +10,24 @@ class Solution:
         windowHash = {}
 
         for char in s1:
-            if char in s1Hash:
-                s1Hash[char] += 1
-            else:
-                s1Hash[char] = 1
-        
- 
+            #hash example; essentially in this example it's if char else 0
+            s1Hash[char] = s1Hash.get(char,0)+1
+
         #Outerloop that grows window, starts at 'window'
         for right in range(len(s2)):
             #Slide window if it's too large
+            leftChar = s2[left]
             if right-left+1 > windowSize:                
-                if windowHash[s2[left]] > 1:
-                    windowHash[s2[left]] -= 1
+                if windowHash[leftChar] > 1:
+                    windowHash[leftChar] -= 1
                 else:
-                    windowHash.pop(s2[left])
-                    
-                
+                    windowHash.pop(leftChar)
+
                 left +=1
 
             #Update hash as window slides
-            if s2[right] in windowHash:
-                windowHash[s2[right]] += 1
-            else:
-                windowHash[s2[right]] = 1
+            rightChar = s2[right]
+            windowHash[rightChar] = windowHash.get(rightChar,0) + 1
 
             if windowHash == s1Hash:
                 return True
