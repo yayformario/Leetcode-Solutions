@@ -19,28 +19,18 @@ class Solution:
         if nums[0] > 0 or nums[length-1] < 0:
             return ans
         
-        duplicates = set()
         #Loop base; ensure other points aren't OOB
         while base < length-2:
-            # CAN'T SKIP DUPLICATES RIGHT OFF THE BAT
-            #Potential answer reusing a variable: [-1,-1,2]
-            #Only skip if we've already seen it before
-            if nums[base] in duplicates:
-                temp = nums[base]
-                while temp == nums[base] and base < length-2:
-                    base += 1
-            
-            #Gauranteed a non duplicate value
+
             #The rest is 2SUM
-            base -=1 
             left = base + 1
             right = length-1
             
             #Searching for target to ensure we're only looking for pairs
             # 0 = base + left + right -> -base = left + right -> target = -base
             target = -nums[base]
-            duplicates2 = set()
             while left < right:
+                #There might a potential solution for early exits here; but haven't coded it
                 sum = nums[left] + nums[right]
                 #Skip any duplicates right off the bat
                 #offset by 1 to cover the edge case of last 3 variables
@@ -53,13 +43,16 @@ class Solution:
                     while temp2 == nums[left] and left < right:
                         left +=1
                 else:
-                    #Check if we've seen solution before adding it
-                    duplicates2.add(nums[left])
                     ans.append([nums[base], nums[left], nums[right]])
-                    left +=1
+                    #Since we no longer need the solution, skip all duplicates
+                    temp2 = nums[left]
+                    while temp2 == nums[left] and left < right:
+                        left +=1
 
-            duplicates.add(nums[base])
-            base+=1
+            #Check if we need to increment or skip duplicates after first pass through
+            temp = nums[base]
+            while temp == nums[base] and base < length-2:
+                base+=1
         return ans
 
 
@@ -69,6 +62,9 @@ class Solution:
 testing = Solution()
 
 examples = [
+
+    #FAILED test case:
+    [1,1,-2],
 
     
 
@@ -89,7 +85,7 @@ examples = [
     #Given examples
     [-1,0,1,2,-1,-4], #[-1,-1,2], [-1,0,1]
     [0,1,1], #[]
-    [0,0,0], #[]
+    [0,0,0], #[0,0,0]
 
     
 
