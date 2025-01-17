@@ -55,22 +55,22 @@ testing = Solution()
 
 input = [
     #Given examples
-    "A man, a plan, a canal: Panama", 
-    "race a car",
-    " ",
+    "A man, a plan, a canal: Panama", #True
+    "race a car", #false
+    " ", #true
 
     #all special chars
-    "!@#$%^",
+    "!@#$%^", #False
 
     #All nums
-    "000111000",
+    "000111000", #True
     
     #All chars
     "RACECAR",
 
     #Nums and letters
-    "a1",
-    "2b",
+    "a1", #false
+    "2b", #false
 
 ]
 
