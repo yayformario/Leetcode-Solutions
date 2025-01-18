@@ -7,8 +7,6 @@ class Solution:
         if length == 1:
             return True
         
-
-        
         #Two pointer solution
         left = 0
         right = length-1
@@ -20,6 +18,11 @@ class Solution:
             while not (s[right].isalnum()) and left < right:
                 right-=1
 
+            #Edge case: All special character results in an empty string
+            #Empty strings are apparently palindromes :^)
+            if left==right:
+                return True
+            
             #Guaranteed alphanumeric
             #Easier to check for cases that aren't palindrome
 
@@ -54,13 +57,17 @@ class Solution:
 testing = Solution()
 
 input = [
+
+    #Missed edge cases: all special chars
+    #All are non-alphanumerics are 'True' because they reduce to '' :^)
+    #Empty string is apparently a palindrome :^)
+    '.,' #True 
+    "!@#$%^", #True;
+
     #Given examples
     "A man, a plan, a canal: Panama", #True
     "race a car", #false
     " ", #true
-
-    #all special chars
-    "!@#$%^", #False
 
     #All nums
     "000111000", #True
