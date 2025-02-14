@@ -17,14 +17,6 @@ class ListNode:
 #val: [-5000,5000
 #up to 5000 nodes
 
-class iterativeSolution2:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-         
-         #for readability
-         currentNode = head
-
-         pass
-
 class interativeSolution:
 
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
