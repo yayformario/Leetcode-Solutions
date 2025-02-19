@@ -61,6 +61,61 @@ class Solution(object):
             
         return maxTurb
     
+    def maxTurbulenceSize2(self, arr):
+        """
+        Constraints:
+            Length: [1, 10000]
+            elements range: [0,1000000000] // no negatives
+        Edge cases: 
+            One element
+                return 1
+        """
+        #Default value
+        maxTurb = 1 
+        currentTurb = 1
+
+        #equal sign: 0
+        #greater than: 1
+        #less tha: -1
+        prevSign = 0
+        currentSign = 0
+
+        #Can safely search (i+1) without going out of bounds
+        for i in range(len(arr) - 1):
+            
+            #===----- Update the currentSign  -----===#
+            #If nextValue is the same value
+            if (arr[i] == arr[i+1]):
+                currentSign = 0
+            #If next value is greater than
+            elif (arr[i] > arr[i+1]):
+                currentSign = 1
+            #If next value is less than
+            elif (arr[i] < arr[i+1]):
+                currentSign = -1
+
+            #===----- Compare the signs for turb -----===# 
+            #Three cases: 
+            #IMPORTANT TO CHECK IF CURRENTSIGN == 0 FIRST
+            # currentSign == 0; reset currentTurb to 1
+            if (currentSign == 0):
+                maxTurb = max(maxTurb, currentTurb)
+                currentTurb = 1
+            # currentSign == prevSign; reset currentTurb to 2
+            elif (currentSign == prevSign):
+                maxTurb = max(maxTurb, currentTurb)
+                currentTurb = 2
+            
+            # currentSign != prevSign; increment currentTurb 
+            elif (currentSign != prevSign):
+                currentTurb += 1
+                maxTurb = max(maxTurb, currentTurb)
+
+            #===----- Update prevSign -----===# 
+            prevSign = currentSign
+            
+        return maxTurb
+    
 
 testing = Solution()
 example = [9,4,2,10,7,8,8,1,9]

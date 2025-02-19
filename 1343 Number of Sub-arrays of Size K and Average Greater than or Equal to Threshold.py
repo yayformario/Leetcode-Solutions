@@ -31,6 +31,39 @@ class Solution(object):
             #Left pointer is simply (Right pointer - k + 1)
             currentSum -= arr[rightPointer - k + 1]
         return returnValue
+    
+    def numOfSubarrays2(self, arr, k, threshold):
+        """
+        :type arr: List[int]
+        :type k: int
+        :type threshold: int
+        :rtype: int
+        """    
+        #Initialize return value
+        returnValue = 0
+        
+        #Two pointer approach
+        #Left pointer will slide with window
+        leftPointer = 0
+ 
+        currentSum = 0
+        currentAvg = 0
+
+        #Loops entire array O(n)
+        for rightPointer in range (len(arr)):
+            currentSum += arr[rightPointer]
+            currentAvg = currentSum // k
+
+            #Grow window until size k
+            if ((rightPointer - leftPointer + 1) == k):
+                if (currentAvg >= threshold):
+                    returnValue += 1
+                #Our window is at size k
+                #incremeneting L now will gaurantee that we stay at k next iteration
+                currentSum -= arr[leftPointer]
+                leftPointer += 1
+
+        return returnValue
 
 testing = Solution()
 

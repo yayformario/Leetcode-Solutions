@@ -1,6 +1,40 @@
 from typing import List
 
 class Solution:
+
+    def removeDuplicatesHash(self, nums: List[int]) -> int:
+        #Quick exits:
+        if (len(nums) <= 2):
+            return len(nums)
+        
+        #left pointer with offset will be our return value
+        leftPointer = 0
+        appearanceCounter = 0
+
+        #right pointer will loop the entire array
+        for rightPointer in range(len(nums)):
+            #Check to see if we encountered a duplicate
+            if (nums[leftPointer] == nums[rightPointer]):
+                #increment the counter; don't move pointer just yet
+                appearanceCounter += 1
+            #We only move leftPointer when:
+            #1. We encounter a new value
+            #2. We only have 1 duplicate
+            #Note: Always update the array to avoid edge cases
+            else:
+                #Different value; move pointer, update value, reset duplicates counter
+                leftPointer += 1
+                nums[leftPointer] = nums[rightPointer]
+                appearanceCounter = 1
+
+            #Move left pointer if it's our first duplicate
+            if (appearanceCounter == 2):
+                leftPointer += 1
+                nums[leftPointer] = nums[rightPointer]
+
+
+        return (leftPointer + 1)
+    
     def removeDuplicates (self, nums: List[int]) -> int:
         #Early exit:
         if (len(nums) <= 2):

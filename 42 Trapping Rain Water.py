@@ -44,6 +44,45 @@ class Solution:
 
         
         return sum
+    
+    def trap2(self, height: List[int]) -> int:
+        #Quick exits
+        if len(height) <= 2:
+            return 0
+
+        #Two pointer approach
+        leftPointer = 0
+        rightPointer = len(height) - 1
+
+        maxLeft = 0
+        maxRight = 0
+
+        trappedWater = 0
+
+        #Loop until pointers cross
+        
+        while leftPointer < rightPointer:
+            #Crawl the smaller pointer; default to crawling right pointer if equal heights (no real reason)
+            if height[leftPointer] < height[rightPointer]:
+                
+                #trapped water = (maxLeft) - (height[leftPointer])
+                #So sum += (maxLeft) - (height[leftPointer])
+                #To avoid adding negatives; add kadane's algo
+                #sum += max((maxLeft) - (height[leftPointer]), 0)
+                trappedWater += max(maxLeft - height[leftPointer], 0)
+
+                #update maxLeft and shift the pointer as needed
+                maxLeft = max(maxLeft, height[leftPointer])
+                leftPointer += 1
+
+            else:
+                trappedWater += max(maxRight - height[rightPointer], 0)
+
+                maxRight = max(maxRight, height[rightPointer])
+                rightPointer -= 1
+
+
+        return trappedWater
 
 testing = Solution()
 
