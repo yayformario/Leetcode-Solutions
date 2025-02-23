@@ -37,6 +37,37 @@ class Solution:
             traverse = temp
 
         return head
+    
+   
+    def mergeTwoListsRecursive(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        #Recursively traverse down list1 and list2
+        #Values grow larger with each step
+        
+
+        #exit condition is EOL
+        #Only traversing down lists with smaller values
+        #I
+        if list1 == None:
+            #Traversing down list 1 until EOL
+            #We don't want to return nothing
+            #Return list2 
+            return list2
+        
+        if list2 == None:
+            #list2 is eol
+            #don't want to return nothing, return list1
+            return list1
+        
+        if list1.val > list2.val:
+            #List 2 has the smaller value, so we'll eventually update list2.next
+            #Go deeper into list 2
+            #whatever gets returned will get assigned to list2.next
+            list2.next = self.mergeTwoListsRecursive(list1, list2.next)
+            return list2
+        else:
+            #And vice versa
+            list1.next = self.mergeTwoListsRecursive(list1.next, list2)
+            return list1
             
     
  
@@ -89,7 +120,6 @@ class Solution:
                     smallerVal = temp
 
 
-
             else:
                 #We can crawl upwards
                 temp = smallerVal.next
@@ -140,8 +170,6 @@ examples = [
     #even lists
     [ [1,2], [3,4]],
 
-
-
     #uneven lists
     [ [4,5,6],[1,2] ], 
 
@@ -175,7 +203,7 @@ for ex in examples:
     if ex[1]:
         list2 = testing.linkedListConverter(ex[1])
 
-    head = testing.mergeTwoLists(list1, list2)
+    head = testing.mergeTwoListsRecursive(list1, list2)
     testing.printLinkedList(head)
     
 
@@ -183,10 +211,3 @@ for ex in examples:
 
 
 
-
-
-
-
-
-
-    
