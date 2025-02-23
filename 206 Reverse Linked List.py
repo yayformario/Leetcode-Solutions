@@ -72,6 +72,3 @@ class recursiveSolution:
 
             #return endPoint 
             return oldEndPoint
-             
-
-                  
