@@ -206,8 +206,3 @@ for ex in examples:
     head = testing.mergeTwoListsRecursive(list1, list2)
     testing.printLinkedList(head)
     
-
-
-
-
-
