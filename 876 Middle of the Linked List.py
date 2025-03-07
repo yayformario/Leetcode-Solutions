@@ -49,17 +49,19 @@ class Solution:
                     #If we're at EOL, check if even or odd list
                     #Odd list, slow pointer is always in middle
                     if i == 0:
-                        return slowPointer.val
+                        return slowPointer
                     #Even list, take the second middle node
                     else:
-                        return slowPointer.next.val
+                        return slowPointer.next
+                    
+            
 
                 
             slowPointer = slowPointer.next
 
             
 
-        return slowPointer.val
+        return slowPointer
     
 
 
